@@ -10,31 +10,37 @@ classifiers = [
   "License :: OSI Approved :: MIT License",
   "Operating System :: OS Independent",
 ]
-description = "This is a template for python projects."
-documentation = "https://python-project-templates.readthedocs.io"
+description = "Selenium Extension for Python"
+documentation = "https://selext.readthedocs.io"
 exclude = [
   "**/tests/",
   "**/*_test.py",
   "**/test_*.py",
   "**/_test_*.py",
 ]
-homepage = "https://github.com/kagemeka/python-project-template/#readme"
+homepage = "https://github.com/kagemeka/selext/#readme"
 include = []
-keywords = ["template", "python"]
+keywords = ["selenium", "python", "webdriver", "extension"]
 license = "MIT"
 maintainers = ["Hiroshi Tsuyuki <kagemeka1@gmail.com>"]
-name = "python-project-templates"
+name = "selext"
 packages = [
-  {include = "package_1", from = "src"},
-  {include = "package_2", from = "src"},
+  {include = "selext", from = "src"},
 ]
 readme = "README.md"
-repository = "https://github.com/kagemeka/python-project-template"
-version = "0.1.3"
+repository = "https://github.com/kagemeka/selext"
+version = "0.1.0"
 
 [tool.poetry.dependencies]
+Pillow = "8.3.1"
+PyYAML = "^"
 optext-python = "0.1.1"
+pyautogui = "^"
+pytesseract = "0.3.7"
 python = ">=3.8,<3.11"
+python-xlib = "^"
+selenium = "^"
+webdriver-manager = "^"
 
 # [[tool.poetry.source]]
 # name = 'private'
@@ -87,24 +93,6 @@ types-requests = "^"
 types-setuptools = "^"
 types-toml = "^"
 
-[tool.poetry.scripts]
-# commands listed here can be invoked from terminal.
-sample-command = "package_2.__main__:main" # run `sample-command`
-
-[tool.poetry.plugins."console_scripts"]
-# for details aboud plugins (or entry_points), see
-# https://python-poetry.org/docs/pyproject/#plugins
-# https://setuptools.pypa.io/en/latest/userguide/entry_point.html
-# https://docs.python.org/3/library/importlib.metadata.html
-# 'console_scripts' section is same to 'poetry.scripts'
-add-1-2 = "package_1.__main__:main"
-
-[tool.poetry.plugins."pseudo_package.plugin"]
-sample-plugin = "package_1.plugins:plugin_call"
-
-[tool.poetry.urls]
-"Twitter" = "https://twitter.com/kagemeka"
-
 # FORMATTING ------------------------------------------------------------------------------
 [tool.black]
 # github: https://github.com/psf/black
@@ -155,7 +143,7 @@ color_output = true
 disallow_any_decorated = true
 disallow_any_explicit = true
 disallow_any_generics = true
-disallow_any_unimported = true
+disallow_any_unimported = false
 disallow_incomplete_defs = true
 disallow_subclassing_any = true
 disallow_untyped_calls = true
