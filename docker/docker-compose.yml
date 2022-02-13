@@ -1,19 +1,28 @@
 version: '3.9'
 
 services:
-  package_dev:
+  py:
     build:
       context: .
       dockerfile: Dockerfile
+    env_file:
+      - gui.env
     image: kagemeka/$PROJECT_NAME:$PROJECT_VERSION
+    init: true
+    network_mode: host
     restart: on-failure
-    # runtime: nvidia # if use CUDA.
+    stdin_open: true
     tty: true
     volumes:
       - type: bind
-        source: $PROJECT_ROOT
-        target: /root/$PROJECT_NAME
+        bind:
+          propagation: rprivate
+        source: /tmp/.X11-unix
+        target: /tmp/.X11-unix
+        read_only: false
         volume:
           nocopy: true
-        read_only: false
+      - type: bind
+        source: $PROJECT_ROOT
+        target: /root/$PROJECT_NAME
     working_dir: /root/$PROJECT_NAME
