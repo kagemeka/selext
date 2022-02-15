@@ -18,6 +18,8 @@ def create_chrome_driver(
     for opt in [
         "--no-sandbox",
         "--start-maximized",
+        "--single-process",
+        "--disable-dev-shm-usage",
     ]:
         options.add_argument(opt)
         # all https://peter.sh/experiments/chromium-command-line-switches/
